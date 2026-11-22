@@ -1,0 +1,49 @@
+erDiagram
+    Customer ||--o{ Rental : "has"
+    Car ||--o{ Rental : "is rented in"
+    CarModel ||--o{ Car : "defines"
+    Rental ||--o{ Payment : "has"
+
+    Customer {
+        int id PK
+        string firstName
+        string lastName
+        string email
+        string phone
+        string city
+        string street
+        string houseNumber
+    }
+
+    Rental {
+        int id PK
+        int customerId FK
+        int carId FK
+        datetime startDate
+        datetime endDate
+        number price
+        string status
+    }
+
+    Car {
+        int id PK
+        int modelId FK
+        string status
+    }
+
+    CarModel {
+        int id PK
+        string brand
+        string model
+        string category
+        string description
+        number dailyRate
+    }
+
+    Payment {
+        int id PK
+        int rentalId FK
+        number amount
+        datetime paymentDate
+        string status
+    }
